@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MessageController {
 
     private KafkaProducer kafkaProducer;
-
+ 
     public MessageController(KafkaProducer kafkaProducer) {
         this.kafkaProducer = kafkaProducer;
     }
