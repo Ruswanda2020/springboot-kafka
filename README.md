@@ -54,9 +54,19 @@ This project provides a REST API endpoint to send messages to the Kafka topic.
     Replace `YourMessageHere` with the message you want to send.
 3.  You will get a `sent message to the topic` response upon success.
 
-## Checking Messages in the Kafka Topic
+## Application Consumer
 
-To see the messages in the `newTopic` topic, you can use the `kafka-console-consumer` tool inside the Kafka container.
+This Spring Boot application also includes a Kafka consumer that listens to the `newTopic` topic. When a message is sent to the topic, the consumer will automatically receive it and print it to the application's log.
+
+You can see this in action by checking the console where you are running the Spring Boot application (`./mvnw spring-boot:run`). After sending a message via the API, you should see a log entry similar to this:
+
+```
+INFO --- [ntainer#0-0-C-1] com.onedev.kafka.kafka.KafkaConsumer  : Message received -> YourMessageHere
+```
+
+## Checking Messages Directly in the Kafka Topic
+
+If you want to verify the messages directly in Kafka, bypassing the application consumer, you can use the `kafka-console-consumer` tool inside the Kafka container.
 
 1.  Make sure the Kafka container is running.
 2.  Open a new terminal and run the following command:
